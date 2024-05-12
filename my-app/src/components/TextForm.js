@@ -8,26 +8,38 @@ export default function TextForm(props)
     {
         let newText = text.toUpperCase();
         setText(newText)
+        props.showAlert("Converted to UpperCase", "success");
     }
     const handelDownClick = () =>
     {
         let newText = text.toLowerCase();
         setText(newText)
+        props.showAlert("Converted to LowerCase", "success");
     }
     const handelDeleteClick = () =>
     {
         let newText = '';
         setText(newText)
+        props.showAlert("Deleted", "warning");
     }
     const handelEmailClick = () =>
     {
         let newText = text + '@gmail.com';
         setText(newText)
+        props.showAlert("E-mail added", "success");
     }
     const handelOnChange = (event) =>
     {
         setText(event.target.value)
     }
+    // const handleCopy = () =>
+    // {
+    //     var text = document.getElementById("myBox");
+    //     text.select();
+    //     text.setSelectionRange(0, 9999);
+    //     navigator.clipboard.writeText(text.value);
+    //     props.showAlert("Copied to Clipboard", "success");
+    // }
     let words = text.split(" ").length - 1;
     return (
         <>
@@ -41,6 +53,7 @@ export default function TextForm(props)
                 <button className="btn btn-primary mx-2" onClick={handelDownClick}>Convert To Lowercase</button>
                 <button className="btn btn-primary mx-2" onClick={handelEmailClick}>Convert To Email</button>
                 <button className="btn btn-danger mx-2" onClick={handelDeleteClick}>Delete</button>
+                {/* <button className="btn btn-primary mx-2" onClick={handleCopy}>Copy</button> */}
             </div>
 
             <div className="container my-3">
